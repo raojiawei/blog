@@ -17,14 +17,20 @@ swig.setDefaults({
 	cache: false
 });
 
-app.get('/', function(req, res, next) {
-	// res.send('<h1>hello world！！！!<h1>');
-	res.render('index.html');
-});
 
-app.get('/main.css', function(req, res, next) {
-	res.setHeader('content-type', 'text/css');
-	res.send('body {color:red;}');
-});
+
+// app.get('/', function(req, res, next) {
+// 	// res.send('<h1>hello world！！！!<h1>');
+// 	res.render('index.html');
+// });
+
+// app.get('/main.css', function(req, res, next) {
+// 	res.setHeader('content-type', 'text/css');
+// 	res.send('body {color:red;}');
+// });
+
+app.use('/admin',require('./routers/admin'));
+// app.use('/api',require('./routers/api'));
+// app.use('/',require('./main'));
 
 app.listen(8081);
