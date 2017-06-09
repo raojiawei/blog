@@ -2,9 +2,9 @@ var express = require('express');
 
 var router = express.Router();
 
-router.get('/user', function(req, res, ntext) {
+router.get('/admin', function(req, res, ntext) {
 
-	res.send('bbb');
+	res.send('admin');
 
 });
 
