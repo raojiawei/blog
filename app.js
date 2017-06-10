@@ -28,10 +28,9 @@ swig.setDefaults({
 // 	res.send('body {color:red;}');
 // });
 
-//app.use('/admin', require('./routers/admin'));
-
-// app.use('/api',require('./routers/api'));
-// app.use('/',require('./main'));
+app.use('/admin', require('./routers/admin'));
+app.use('/api', require('./routers/api'));
+app.use('/', require('./routers/main'));
 
 mongoose.connect('mongodb://localhost:27018/blog', function(err) {
 	if (err) {
