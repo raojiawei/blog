@@ -4,9 +4,28 @@ var swig = require('swig');
 
 var mongoose = require('mongoose')
 
+var bodyParser = require('body-parser')
+
+var Cookies = require('cookies');
+
 var app = express();
 
 // console.log(__dirname);
+app.use(function(req, res, next) {
+	req.cookies = new Cookies(req, res);
+
+	req.userInfo = {};
+
+	if (req.cookies.get('userInfo')) {
+
+		req.userInfo = JSON.parse(req.cookies.get('userInfo'));
+
+	}
+
+	// console.log(req.cookies.get('userinfo'));
+
+	next();
+});
 
 app.use('/public', express.static(__dirname + '/public'));
 
@@ -27,6 +46,14 @@ swig.setDefaults({
 // 	res.setHeader('content-type', 'text/css');
 // 	res.send('body {color:red;}');
 // });
+
+// app.user(bodyParser.urlencoded({
+// 	extended: true
+// }));
+
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
 
 app.use('/admin', require('./routers/admin'));
 app.use('/api', require('./routers/api'));

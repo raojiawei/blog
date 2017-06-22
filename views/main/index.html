@@ -12,8 +12,15 @@
 		<ul>
 			<li><input type="text" name="username" value="rao" /></li>
 			<li><input type="text" name="password" value="123" /></li>
-			<li><input id="btnRegist" type="button" value="注册" /></li>
+			<li><input id="btnRegist" type="button" value="注册" /> | <input id="btnLogin" type="submit" value="登录" /></li>
 		</ul>
 	</div>
+
+
+	{% if userInfo._id %}
+	a
+	{% else %}
+	b
+	{% endif %}
 </body>
 </html>
