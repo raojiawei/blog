@@ -2,9 +2,14 @@ var express = require('express');
 
 var router = express.Router();
 
-router.get('/admin', function(req, res, ntext) {
+router.use('/admin', function(req, res, ntext) {
 
-	res.send('admin');
+	if (!req.userinfo.isAdmin) {
+
+
+	} 
+	
+	next();
 
 });
 

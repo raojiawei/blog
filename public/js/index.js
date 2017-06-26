@@ -41,5 +41,21 @@ $(function() {
     });
 
 
+    var btnExit = $('#btnExit');
+    btnExit.on('click', function() {
+        $.ajax({
+
+            url: '/api/user/loginout',
+            success: function(result) {
+                if (!result.code) {
+
+                    window.location.reload();
+                    
+                }
+
+            }
+
+        });
+    });
 
 });

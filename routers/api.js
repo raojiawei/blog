@@ -120,4 +120,14 @@ router.post('/user/login', function(req, res, next) {
 
 });
 
+
+
+router.get('/user/loginout', function(req, res, next) {
+
+	req.cookies.set('userinfo', null);
+
+	responseData.code = 0;
+	responseData.message = 'exit is success';
+	res.json(responseData);
+});
 module.exports = router;

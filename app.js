@@ -8,23 +8,34 @@ var bodyParser = require('body-parser')
 
 var Cookies = require('cookies');
 
+var User = require('./models/User.js');
+
 var app = express();
 
 // console.log(__dirname);
 app.use(function(req, res, next) {
 	req.cookies = new Cookies(req, res);
 
-	req.userInfo = {};
+	req.userinfo = {};
 
-	if (req.cookies.get('userInfo')) {
+	if (req.cookies.get('userinfo')) {
 
-		req.userInfo = JSON.parse(req.cookies.get('userInfo'));
+		req.userinfo = JSON.parse(req.cookies.get('userinfo'));
 
+		User.findById(req.userinfo._id).then(function(userinfo) {
+
+			req.userinfo.isAdmin = Boolean(userinfo.isAdmin);
+
+			console.log(req.userinfo.isAdmin);
+
+			next();
+
+		});
+
+	} else {
+		next();
 	}
 
-	// console.log(req.cookies.get('userinfo'));
-
-	next();
 });
 
 app.use('/public', express.static(__dirname + '/public'));

@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="/public/css/main.css">
-	<script type="text/javascript" src="/public/js/jquery.js"></script>
-	<script type="text/javascript" src="/public/js/index.js"></script>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/main.css">
+    <script type="text/javascript" src="/public/js/jquery.js"></script>
+    <script type="text/javascript" src="/public/js/index.js"></script>
 </head>
+
 <body>
-	<div class="box">
-		<ul>
-			<li><input type="text" name="username" value="rao" /></li>
-			<li><input type="text" name="password" value="123" /></li>
-			<li><input id="btnRegist" type="button" value="注册" /> | <input id="btnLogin" type="submit" value="登录" /></li>
-		</ul>
-	</div>
-
-
-	{% if userInfo._id %}
-	a
-	{% else %}
-	b
-	{% endif %}
+    <div class="box">
+        <ul>
+            <li>
+                <input type="text" name="username" value="rao" />
+            </li>
+            <li>
+                <input type="text" name="password" value="123" />
+            </li>
+            <li>
+                <input id="btnRegist" type="button" value="注册" /> |
+                <input id="btnLogin" type="submit" value="登录" /> |
+                <input id="btnExit" type="button" value="退出" />
+            </li>
+        </ul>
+    </div>
+    {% if userinfo._id %} {{userinfo.username}} {% else %} b {% endif %}
 </body>
+
 </html>
