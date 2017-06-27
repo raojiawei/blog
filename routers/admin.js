@@ -2,15 +2,13 @@ var express = require('express');
 
 var router = express.Router();
 
-router.use('/admin', function(req, res, ntext) {
-
-	if (!req.userinfo.isAdmin) {
-
-
-	} 
+router.use('/', function(req, res, ntext) {
 	
-	next();
+	res.render('admin/index', {
+		userinfo: req.userinfo
+	});
 
 });
+
 
 module.exports = router;
